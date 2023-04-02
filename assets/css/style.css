@@ -1,0 +1,142 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;0,800;1,800&display=swap');
+
+:root {
+  --font-size: 16px;
+  --font-family: 'Poppins', sans-serif;
+
+  --bg-color: #F0F0F0;
+  --value-color: #854DFF;
+  --btn-color: #854DFF;
+  --btn-color-hover: #151515;
+  --text-color: #151515;
+  --label-color: #716F6F;
+  --line-color: #DCDCDC;
+
+  --wrapper-padding: 3.5em;
+}
+
+html {
+  font-size: var(--var-size);
+  font-family: var(--font-family);
+  font-weight: 700;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+/* to make invisible the text we keep for screen readers */
+.hidden-visually {
+  position: absolute;
+  display: block;
+  top: 0; left: 0;
+  width: 1;
+  height: 1;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.wrapper {
+  background-color: #fff;
+  padding: var(--wrapper-padding);
+  border-radius: 24px 24px 200px 24px;
+  width: max(60%, 840px);
+}
+
+/* FORM CSS */
+
+.date-form {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  gap: 2em;
+  padding-bottom: 6em;
+  overflow: hidden;
+}
+
+.date-form__box {
+  display: flex;
+  flex-direction: column;
+  width: 22%;
+}
+
+.date-form__label {
+  color: var(--label-color);
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+
+}
+
+.date-form__input {
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--line-color);
+  border-radius: 5px;
+  font-size: 2rem;
+}
+
+.date-form__input::placeholder {
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.date-form__submit-btn {
+  width: 6em;
+  height: 6em;
+  background-color: var(--btn-color);
+  border-radius: 50%;
+  position: absolute;
+  right: 0; bottom: 0;
+  transition: background-color 150ms ease-in-out;
+}
+
+.date-form__submit-btn:hover {
+  background-color: var(--btn-color-hover);
+  cursor: pointer;
+}
+
+.date-form__submit-btn::after {
+  content: '';
+  background: url('../images/icon-arrow.svg') no-repeat top 50% left 50%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.date-form__submit-btn::before {
+  content: '';
+  position: absolute;
+  width: max(60%, 840px);
+  height: 1px;
+  right: 100%;
+  background-color: var(--line-color);
+}
+
+
+/* RESULT CSS */
+.result {
+  font-size: 6rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--text-color);
+  line-height: 115%;
+}
+
+.result__value {
+  color: var(--value-color);
+  margin-right: 0.5rem;
+}
