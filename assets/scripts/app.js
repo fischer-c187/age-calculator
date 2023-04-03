@@ -7,8 +7,7 @@ function handleSubmit(managerForm, ageCalculator, ageDisplay) {
     .addEventListener('submit', () => {
       if(managerForm.submitValidity()){
         ageCalculator.date = managerForm.getDateInForm();
-        ageDisplay.displayDate(ageCalculator.years, ageCalculator.months, ageCalculator.days);
-        console.log(ageCalculator.years, ageCalculator.months, ageCalculator.days);
+        ageDisplay.displayAnimation(ageCalculator.years, ageCalculator.months, ageCalculator.days);
       } else {
         ageDisplay.displayDefaultDate();
       }

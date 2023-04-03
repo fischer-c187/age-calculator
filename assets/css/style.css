@@ -157,3 +157,7 @@ body {
   padding: 0 1.5rem;
   /* filter: url("#blurFilter"); */
 }
+
+.animate {
+  filter: url("#blurFilter");
+}
