@@ -20,9 +20,9 @@ export class AgeDisplay {
   }
 
   displayDate(final=false) {
-    this.#monthsElement.innerText = final ? this.month : this.#current;
-    this.#yearsElement.innerText = final ? this.year : this.#current;
-    this.#daysElement.innerText = final ? this.day : this.#current;
+    this.#monthsElement.innerText = final ? this.month : this.#current.toString().slice(0, this.month.toString().length);
+    this.#yearsElement.innerText = final ? this.year : this.#current.toString().slice(0, this.year.toString().length);
+    this.#daysElement.innerText = final ? this.day : this.#current.toString().slice(0, this.day.toString().length);
   }
   
   displayAnimation(years, months, days) {
@@ -41,11 +41,11 @@ export class AgeDisplay {
   startAnimation() {
     document.querySelectorAll('.result__value')
       .forEach(element => element.classList.add('animate'));
-
     this.update();
   }
 
   update = () => {
+    console.log(this.#step)
     this.#current += this.#step;
     this.displayDate();
     if(Math.abs(this.#target-this.#current) > this.#step) {
@@ -62,6 +62,9 @@ export class AgeDisplay {
   }
 
   displayDefaultDate() {
-    this.displayDate(this.#defaultValue, this.#defaultValue, this.#defaultValue);
+    this.year = this.#defaultValue;
+    this.month = this.#defaultValue;
+    this.day = this.#defaultValue;
+    this.displayDate(true);
   }
 }
