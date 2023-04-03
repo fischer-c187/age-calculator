@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script type="module" src="./assets/scripts/app.js"></script>
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | Age calculator app</title>
@@ -20,17 +21,24 @@
       </div>
       <div class="date-form__box">
         <label for="year" class="date-form__label">Day</label>
-        <input type="text" placeholder="YYYY" year="year" class="date-form__input">
+        <input type="text" placeholder="YYYY" id="year" class="date-form__input">
       </div>
       <button type="submit" class="date-form__submit-btn"><span class="hidden-visually">submit</span></button>
     </form>
     <div class="result">
       <ul class="result__list">
-        <li class="result__item"><span class="result__value">- -</span>years</li>
-        <li class="result__item"><span class="result__value">- -</span>months</li>
-        <li class="result__item"><span class="result__value">- -</span>days</li>
+        <li class="result__item"><span class="result__value result-years">- -</span>years</li>
+        <li class="result__item"><span class="result__value result-months">- -</span>months</li>
+        <li class="result__item"><span class="result__value result-days">- -</span>days</li>
       </ul>
     </div>
   </main>
+  <svg class="svgFilter" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="blurFilter">
+        <feGaussianBlur id="blurFilterItem" in="SourceGraphic" stdDeviation="13,0" />
+      </filter>
+    </defs>
+  </svg>
 </body>
 </html>
