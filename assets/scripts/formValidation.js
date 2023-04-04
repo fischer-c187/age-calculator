@@ -31,9 +31,7 @@ export class FormValidation {
   }
 
   getDateInForm() {
-    const year = +this.#formElement.querySelector('#year').value;
-    const month = +this.#formElement.querySelector('#month').value - 1;
-    const day = +this.#formElement.querySelector('#day').value;
+    const { year, month, day } = this.#getDateData();
 
     return new Date(year, month, day);
   }
@@ -42,14 +40,12 @@ export class FormValidation {
     return Object.values(this.#error).every(input => input.valid);
   }
 
-  #getFormDate() {
+  #getDateData() {
     const year = +this.#formElement.querySelector('#year').value;
     const month = +this.#formElement.querySelector('#month').value - 1;
     const day = +this.#formElement.querySelector('#day').value;
 
-    const date = new Date(year, month, day);
-
-    return date;
+    return { year, month, day };
   }
 
   // TODO : fonction beaucoup trop longue
@@ -71,8 +67,15 @@ export class FormValidation {
     });
   }
 
+  #createErrorElement(message) {
+    const errorElement = document.createElement('p');
+    errorElement.classList.add('error-message');
+    errorElement.innerText = message;
+    return errorElement;
+  }
+
   #removeErrorMessage(element) {
-    if(element.nextElementSibling){
+    if(this.#containErrorMessage(element)){
       element.nextElementSibling.remove();
     }
     this.#toggleErrorClass(element, false);
@@ -80,10 +83,7 @@ export class FormValidation {
 
   #addErrorMessage(element, message, cible='afterend') {
     if(!this.#containErrorMessage(element)){
-      const errorElement = document.createElement('p');
-      errorElement.classList.add('error-message');
-      errorElement.innerText = message;
-      element.insertAdjacentElement(cible, errorElement);
+      element.insertAdjacentElement(cible, this.#createErrorElement(message));
     }
     else if(element.nextElementSibling.innerText !== message) {
       element.nextElementSibling.innerText = message;
@@ -111,7 +111,7 @@ export class FormValidation {
   };
 
   #validYear = () => {
-    const date = this.#getFormDate();
+    const date = this.getDateInForm();
     const actuallyDate = new Date();
     if(date > actuallyDate) {
       return false;
@@ -121,9 +121,7 @@ export class FormValidation {
   };
 
   #validDay = () => {
-    const year = +this.#formElement.querySelector('#year').value;
-    const month = +this.#formElement.querySelector('#month').value - 1;
-    const day = +this.#formElement.querySelector('#day').value;
+    const { year, month, day } = this.#getDateData();
     const date = new Date(year, month, day);
     return (date.getMonth() === month) 
       && (date.getFullYear() === year) 

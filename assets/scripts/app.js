@@ -2,24 +2,20 @@ import { FormValidation } from './formValidation.js';
 import { AgeCalculator } from './ageCalculator.js';
 import { AgeDisplay } from './ageDisplay.js';
 
-function handleSubmit(managerForm, ageCalculator, ageDisplay) {
-  document.querySelector('form')
-    .addEventListener('submit', () => {
-      if(managerForm.submitValidity()){
-        ageCalculator.date = managerForm.getDateInForm();
-        ageDisplay.displayAnimation(ageCalculator.years, ageCalculator.months, ageCalculator.days);
-      } else {
-        ageDisplay.displayDefaultDate();
-      }
-    });
-}
-
 function main() {
   const managerForm = new FormValidation('form');
   const manageAge = new AgeCalculator();
   const manageDisplayDate = new AgeDisplay();
-  handleSubmit(managerForm, manageAge, manageDisplayDate);
 
+  document.querySelector('form')
+    .addEventListener('submit', () => {
+      if(managerForm.submitValidity()){
+        manageAge.date = managerForm.getDateInForm();
+        manageDisplayDate.displayAnimation(manageAge.years, manageAge.months, manageAge.days);
+      } else {
+        manageDisplayDate.displayDefaultDate();
+      }
+    });
 }
 
 main();
