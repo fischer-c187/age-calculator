@@ -1,4 +1,4 @@
-import { differenceInYears, differenceInMonths, differenceInDays } from './date-fns/esm/index.js';
+import { differenceInYears, differenceInMonths, differenceInDays } from 'https://cdn.skypack.dev/date-fns';
 
 export class AgeCalculator {
   #date;

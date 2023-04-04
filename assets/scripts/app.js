@@ -8,7 +8,8 @@ function main() {
   const manageDisplayDate = new AgeDisplay();
 
   document.querySelector('form')
-    .addEventListener('submit', () => {
+    .addEventListener('submit', (event) => {
+      event.preventDefault();
       if(managerForm.submitValidity()){
         manageAge.date = managerForm.getDateInForm();
         manageDisplayDate.displayAnimation(manageAge.years, manageAge.months, manageAge.days);
